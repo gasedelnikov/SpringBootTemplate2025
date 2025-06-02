@@ -1,0 +1,96 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  compression:
+    enabled: true
+  http2:
+    enabled: false
+  servlet:
+    contextPath: /
+
+spring:
+  servlet:
+    multipart:
+      maxFileSize: 5242880
+  profiles:
+    active: default
+  application:
+    name: ${MICROSERVICE_NAME:core-service}
+  main:
+    web-application-type: SERVLET
+    allow-bean-definition-overriding: false
+    lazy-initialization: false
+    banner-mode: off
+  mvc:
+    static-path-pattern: /resources/**
+    format:
+      date: iso
+      time: iso
+      date-time: iso
+    async:
+      request-timeout: 300
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/core
+    username: dev
+    password: dev
+    driverClassName: org.postgresql.Driver
+  flyway:
+    enabled: true
+    schemas:
+      - public
+    defaultSchema: public
+    encoding: utf-8
+    baseline-on-migrate: true
+    clean-on-validation-error: true
+    clean-install: false
+    locations: classpath:db/migration
+    placeholders:
+      defaultSchema: public
+    clean-disabled: false
+
+  sql:
+    init:
+      platform: postgres
+  config:
+    import: optional:file:.env[.properties]
+  jpa:
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 32
+
+
+  thymeleaf:
+    check-template-location: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ health, env ]
+      base-path: /actuator
+  endpoint:
+    env:
+      show-values: WHEN_AUTHORIZED
+
+springdoc:
+  swagger-ui:
+    path: /swagger/swagger-ui.html
+    operationsSorter: method
+
+jwt:
+  issuer: e2b5cb0a-19f9-4472-9e5b-36d71275f2e9
+  expiration-access-sec: 86400
+  expiration-refresh-sec: 2592000
+  secret: 067b4e99f1cf4aa9ba971909f0574cc4e2b5cb0a19f944729e5b36d71275f2e9
+
+logging:
+  level:
+    root: info
+
+

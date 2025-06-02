@@ -1,0 +1,10 @@
+/.idea/
+/core-service-application/target/
+/core-service-api/target/
+/core-service-impl/target/
+/core-service-model/target/
+/core-service-security/target/
+/core-service-dao/target/
+/dev/.postgres-data/
+.env
+

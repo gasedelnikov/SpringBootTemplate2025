@@ -1,0 +1,40 @@
+services:
+
+  #  core-service:
+  #    container_name: core-service
+  #    image: gasedelnikov/gri/core:latest
+  #    networks:
+  #      - core-net
+  #    ports:
+  #      - 8080:8080
+  #    command: java -jar app.jar
+  #    environment:
+  #      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-core-db:5432/core?currentSchema=public
+  #      SPRING_DATASOURCE_USERNAME: postgres
+  #      SPRING_DATASOURCE_PASSWORD: postgres
+  #    depends_on:
+  #      - postgres-core-db
+
+  postgres-core-db:
+    image: 'postgres:16.2-alpine'
+    container_name: 'postgres-core-db'
+    networks:
+      - core-net
+    ports:
+      - '5432:5432'
+    volumes:
+      - './.postgres-data:/var/lib/postgresql/data'
+      - './create-database.sql:/docker-entrypoint-initdb.d/1-init.sql'
+    environment:
+      LC_ALL: 'C.UTF-8'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'core'
+      PGDATA: '/var/lib/postgresql/data'
+    restart: unless-stopped
+
+networks:
+  core-net:
+    driver: bridge
+
+
