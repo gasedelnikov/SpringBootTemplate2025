@@ -42,7 +42,6 @@ spring:
     defaultSchema: public
     encoding: utf-8
     baseline-on-migrate: true
-    clean-on-validation-error: true
     clean-install: false
     locations: classpath:db/migration
     placeholders:
