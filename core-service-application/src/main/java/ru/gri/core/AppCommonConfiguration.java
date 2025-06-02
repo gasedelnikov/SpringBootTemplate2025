@@ -6,7 +6,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTimeZone;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -23,7 +22,6 @@ import ru.gri.core.impl.service.date.impl.JodaDateService;
 @Slf4j
 @EnableJpaRepositories(repositoryBaseClass = BaseRepositoryImpl.class)
 @EnableJpaAuditing
-@EnableFeignClients
 public class AppCommonConfiguration {
 
     @Bean

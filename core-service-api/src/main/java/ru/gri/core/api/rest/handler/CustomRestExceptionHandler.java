@@ -1,7 +1,6 @@
 package ru.gri.core.api.rest.handler;
 
 
-import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.mapping.PropertyReferenceException;
@@ -62,17 +61,6 @@ public class CustomRestExceptionHandler {
     public ResponseEntity<BaseResponse<Object>> handleMissingServletRequestParameterException(Exception exception) {
         String message = logException(exception);
         return returnCustomException(CustomExceptionMessage.FIELD_MAPPING_ERROR, message);
-    }
-
-    @ExceptionHandler({FeignException.class})
-    public ResponseEntity<BaseResponse<Object>> handleFeignException(FeignException exception) {
-        String message = logException(exception);
-
-        if (exception.status() == 401) {
-            return returnCustomException(CustomExceptionMessage.FEIGN_AUTHORIZATION_ERROR, message);
-        } else {
-            return returnCustomException(CustomExceptionMessage.FEIGN_ERROR, message);
-        }
     }
 
     @ExceptionHandler({IllegalArgumentException.class, HandlerMethodValidationException.class})
