@@ -3,6 +3,7 @@ package ru.gri.core.model.dto.in.nsi;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class BookIn implements InputModel {
     private Long authorId;
     private String name;
     private String description;
+    private JsonNode info;
 
 }

@@ -1,6 +1,7 @@
 package ru.gri.core.dao.model.nsi;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,6 +19,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import ru.gri.core.dao.model.AbstractTimestampsAndUsersAuditEntity;
 import ru.gri.core.dao.model.BaseEntity;
 
@@ -51,5 +54,9 @@ public class BookEntity extends AbstractTimestampsAndUsersAuditEntity implements
 
     @Column(name = "description", columnDefinition = "varchar")
     private String description;
+
+    @Column(name = "info", columnDefinition = "JSONB")
+    @JdbcTypeCode(SqlTypes.JSON)
+    private JsonNode info;
 
 }

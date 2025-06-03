@@ -70,6 +70,7 @@ CREATE TABLE ${defaultSchema}.book
     author_id       BIGINT                                  NOT NULL,
     name            VARCHAR(255)                            NOT NULL,
     description     TEXT                                    NULL,
+    info            JSONB                                   NULL,
 
     created_ts      TIMESTAMPTZ                             NOT NULL DEFAULT NOW(),
     created_user_id BIGINT                                  NOT NULL,

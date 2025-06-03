@@ -2,6 +2,7 @@ package ru.gri.core.model.dto.out.nsi;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,6 @@ public class BookOut extends BaseOut implements OutputModel {
     private AuthorOut author;
     private String name;
     private String description;
+    private JsonNode info;
 
 }
