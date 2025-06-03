@@ -44,19 +44,20 @@ public class AuthorEntity extends AbstractTimestampsAndUsersAuditEntity implemen
     @Column(name = "type", columnDefinition = "enum", nullable = false)
     @Type(value = StringEnumSqlUserType.class)
     private String type;
-    @Column(name = "fio", columnDefinition = "varchar", nullable = false)
-    private String fio;
-    @Column(name = "description", columnDefinition = "varchar", nullable = false)
-    private String description;
-    @OneToMany(mappedBy = "authorEntity", fetch = FetchType.LAZY)
-    private List<BookEntity> bookEntities;
-
     public AuthorType getType() {
         return (type == null) ? null : AuthorType.getByValue(type);
     }
-
     public void setType(AuthorType type) {
         this.type = (type == null) ? null : type.value();
     }
+
+    @Column(name = "fio", columnDefinition = "varchar", nullable = false)
+    private String fio;
+
+    @Column(name = "description", columnDefinition = "varchar", nullable = false)
+    private String description;
+
+    @OneToMany(mappedBy = "authorEntity", fetch = FetchType.LAZY)
+    private List<BookEntity> bookEntities;
 
 }

@@ -83,10 +83,10 @@ springdoc:
     operationsSorter: method
 
 jwt:
-  issuer: e2b5cb0a-19f9-4472-9e5b-36d71275f2e9
+  issuer: df583d90-f604-479e-874c-4e475a1785dc
   expiration-access-sec: 86400
   expiration-refresh-sec: 2592000
-  secret: 067b4e99f1cf4aa9ba971909f0574cc4e2b5cb0a19f944729e5b36d71275f2e9
+  secret: c9adff3dfdec44a7bf9ba17ea4f329883a0c0935fbf54e8ebd6eea135577d1b8
 
 logging:
   level:
